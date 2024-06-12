@@ -10,16 +10,10 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model classess {
+model company {
   id       String     @id @default(auto()) @map("_id") @db.ObjectId
-  cName    String     @unique
-  students students[]
-}
-
-model students {
-  id      String   @id @default(auto()) @map("_id") @db.ObjectId
-  name    String   @unique
-  phone   Int
-  class   classess @relation(fields: [classId], references: [id])
-  classId String   @db.ObjectId
+  name    String     @unique
+  location    String    
+  description    String    
+  contact    String 
 }

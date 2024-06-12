@@ -6,7 +6,6 @@ app.use(express.json())
 app.use(cors());
 app.get("/", async (req, res) => {
 res.status(200).json('welcome to company records service Api')
-    
   });
 app.use('/compnay',sampleRoute)
 // app.use('/student',stdRoute)

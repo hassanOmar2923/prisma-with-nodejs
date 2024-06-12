@@ -1,8 +1,9 @@
 import express from 'express'
 const app = express()
 import sampleRoute from './route/index.js'
-// import stdRoute from './route/students.js'
+import cors from 'cors';
 app.use(express.json())
+app.use(cors());
 app.get("/", async (req, res) => {
 res.status(200).json('welcome to company records service Api')
     

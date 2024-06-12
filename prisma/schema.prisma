@@ -15,5 +15,6 @@ model company {
   name    String     @unique
   location    String    
   description    String    
+  category    String 
   contact    String 
 }

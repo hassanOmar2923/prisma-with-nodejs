@@ -6,6 +6,7 @@ function Validation(body){
         location: joi.string().required(),
         description: joi.string().required(),
         contact: joi.string().required(),
+        category: joi.string().required(),
 
     })
     return val.validate(body)

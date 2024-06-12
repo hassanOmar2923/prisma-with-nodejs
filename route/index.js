@@ -6,7 +6,7 @@ const app = express.Router();
 app.get("/", async (req, res) => {
   try {
     const getData = await prisma.company.findMany();
-  if (!getData) return res.status(404).json({status:false,message:`wax xog eh majiraan!`});
+  if (getData.length <= 0) return res.status(404).json({status:false,message:`wax xog eh majiraan!`});
   res.status(200).json(getData);
   } catch (error) {
     res.status(500).json({status:false,message:"internal error"});

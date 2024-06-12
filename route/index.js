@@ -48,4 +48,15 @@ app.put("/:id", async (req, res) => {
     res.status(500).json({status:false,message:"internal error"});
   }
 });
+
+app.delete("/:id", async (req, res) => {
+  try {
+    const deleteData = await prisma.company.delete({
+      where: { id: req.params.id },
+    });
+    res.status(200).json("sucessfully deleted");
+  } catch (error) {
+    res.status(500).json({status:false,message:"internal error"});
+  }
+});
 export default app;

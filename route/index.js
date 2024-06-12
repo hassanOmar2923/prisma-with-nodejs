@@ -28,7 +28,7 @@ app.get("/:id", async (req, res) => {
 app.post("/", async (req, res) => {
   try {
     const { error } = Validation(req.body);
-    if (error) return res.status(400).json({status:false,message:`waalaso waayay!`});
+    if (error) return res.status(400).json({status:false,message:error.message});
     const postData = await prisma.company.create({ data: req.body });
     res.status(201).json("sucessfully created");
   } catch (error) {
@@ -38,7 +38,7 @@ app.post("/", async (req, res) => {
 app.put("/:id", async (req, res) => {
   try {
     const { error } = Validation(req.body);
-    if (error) return res.status(400).json({status:false,message:`waalaso waayay!`});
+    if (error) return res.status(400).json({status:false,message:error.message});
     const updateData = await prisma.company.update({
       where: { id: req.params.id },
       data:req.body

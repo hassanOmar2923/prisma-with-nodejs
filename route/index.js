@@ -29,6 +29,10 @@ app.post("/", async (req, res) => {
   try {
     const { error } = Validation(req.body);
     if (error) return res.status(400).json({status:false,message:error.message});
+    const isalready= await prisma.company.findUnique({
+      where:{name:req.body.name}
+    })
+    if(isalready) return res.status(409 ).json({status:false,message:"this company is already exists"})
     const postData = await prisma.company.create({ data: req.body });
     res.status(201).json("sucessfully created");
   } catch (error) {

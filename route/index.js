@@ -34,7 +34,7 @@ app.post("/", async (req, res) => {
     })
     if(isalready) return res.status(409 ).json({status:false,message:"this company is already exists"})
     const postData = await prisma.company.create({ data: req.body });
-    res.status(201).json("sucessfully created");
+    res.status(201).json({status:true,message:"sucessfully created"});
   } catch (error) {
     res.status(500).json({status:false,message:"internal error"});
   }
